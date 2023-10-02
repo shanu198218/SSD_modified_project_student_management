@@ -1,11 +1,30 @@
 const app = require("./app");
 const { default: mongoose } = require("mongoose");
 require("dotenv").config({ path: "config/config.env" });
+const express = require('express');
+const helmet = require('helmet');
 
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "config/config.env" });
 }
+
+// Use Helmet middleware these middleware help to mitigate cross site scripting 
+app.use(helmet());
+
+
+//use helmet middleware for specific headers
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", 'trusted-scripts.com'],
+        styleSrc: ["style-src"],
+      },
+    },
+  })
+);
 
 //move to database url to config.env then hide hardcoded database connection string
 const DB_URL = process.env.DB_URL;
