@@ -1,2 +1,2 @@
-# SSD_modified_project_student_management
+# Secure Software Development  modified project student management
 Modify project after fixing vulnerabilities
