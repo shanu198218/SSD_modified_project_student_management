@@ -1,0 +1,25 @@
+footer {
+  margin-top: 10vmax;
+  padding: 2vmax;
+  background-color: #34495e;
+  color: white;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+}
+
+.midFooter {
+  width: 100%;
+  text-align: center;
+}
+
+.midFooter > h1 {
+  font-size: 3vmax;
+  font-family: "Franklin Gothic Medium", Arial, sans-serif;
+  color: #ef991e;
+}
+
+.midFooter > p {
+  max-width: 60%;
+  margin: 1vmax auto;
+}
