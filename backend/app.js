@@ -25,11 +25,9 @@ const limiter = rateLimit({
   max: 100,
 });
 
-// Add the csurf middleware with options (e.g., cookie: true)
 app.use(
   csrf({
     cookie: true,
-    // Add other options if needed
   })
 );
 
