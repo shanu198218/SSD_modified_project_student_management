@@ -60,7 +60,7 @@ const LoginSignUp = ({ history }) => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      history.push("/timetables");
+      history.push("/paydetails");
     }
   }, [dispatch, error, alert, history, isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
 
