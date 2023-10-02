@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
+const csrf = require("csurf");
 
 const errorMiddleware = require("./middleware/error");
 
@@ -23,6 +24,14 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
 });
+
+// Add the csurf middleware with options (e.g., cookie: true)
+app.use(
+  csrf({
+    cookie: true,
+    // Add other options if needed
+  })
+);
 
 //route imports
 const user = require("./routes/userRoute");
