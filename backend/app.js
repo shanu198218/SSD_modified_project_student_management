@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 
 //route imports
@@ -31,19 +31,15 @@ const users = require("./controllers/usersController");
 const studentpayment = require("./routes/student_pay_R.js");
 const teachSal = require("./routes/teacher_sal_route.js");
 
-
 const router = require("./routes/examTimeTable_routes");
 const result = require("./routes/examResults_routes");
 
-const postClass = require('./routes/classRoutes');
-const postNotice = require('./routes/noticeRoutes');
-
-
-
+const postClass = require("./routes/classRoutes");
+const postNotice = require("./routes/noticeRoutes");
 
 app.use("/api/v1", user);
 app.use("/api/v1", users);
-app.use(studentpayment, limiter); 
+app.use(studentpayment, limiter);
 app.use(teachSal, limiter);
 app.use("/api/v1", limiter);
 

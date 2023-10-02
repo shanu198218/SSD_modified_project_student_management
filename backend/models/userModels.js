@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter Your  Contact Number"],
     minlength: [9, "Contact Number should containe more than 9 characters"],
-    maxlength: [ 11, "Contact Number should contain less than 11 characters"],
+    maxlength: [11, "Contact Number should contain less than 11 characters"],
   },
   role: {
     type: String,
@@ -68,7 +68,7 @@ userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
-  
+
   try {
     // Generate a random salt with 10 rounds
     const salt = await bcrypt.genSalt(10);
@@ -80,7 +80,6 @@ userSchema.pre("save", async function (next) {
     next(error);
   }
 });
-
 
 //JWT TOKEN
 userSchema.methods.getJWTToken = function () {
