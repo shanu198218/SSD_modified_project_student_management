@@ -81,7 +81,7 @@ function App() {
   return (
     <Router>
       <Header />
-      {isAuthenticated && GoogleAuthProvider && <UserOptions />}
+      {isAuthenticated && <UserOptions user={user} />}
 
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={LoginSignUp} />
