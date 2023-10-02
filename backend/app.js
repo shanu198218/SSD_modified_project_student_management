@@ -31,6 +31,11 @@ app.use(
   })
 );
 
+app.use(function (req, res, next) {
+  res.removeHeader("X-Powered-By");
+  next();
+});
+
 //route imports
 const user = require("./routes/userRoute");
 const users = require("./controllers/usersController");
