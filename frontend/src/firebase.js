@@ -1,23 +1,17 @@
+
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
+//Add environmental variables to mitigate hardcoded secret vulnerability
 const firebaseConfig = {
-
-  apiKey: "AIzaSyCZUlLDR-mFpc_gYNzaXSb3yFWbuqHuoLw",
-
-  authDomain: "demofile-b2653.firebaseapp.com",
-
-  projectId: "demofile-b2653",
-
-  storageBucket: "demofile-b2653.appspot.com",
-
-  messagingSenderId: "102342431435",
-
-  appId: "1:102342431435:web:45d3431bd4f7f124a0414e",
-
-  measurementId: "G-89XV2NM5YR"
-
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
-export const app = initializeApp(firebaseConfig)
+export const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
