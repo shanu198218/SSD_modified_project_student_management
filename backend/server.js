@@ -3,6 +3,7 @@ const { default: mongoose } = require("mongoose");
 require("dotenv").config({ path: "config/config.env" });
 const express = require('express');
 const helmet = require('helmet');
+var csrf = express.csrf();
 
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
@@ -11,6 +12,17 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 // Use Helmet middleware these middleware help to mitigate cross site scripting 
 app.use(helmet());
+
+var conditionalCSRF = function (req, res, next) {
+  //compute needCSRF here as appropriate based on req.path or whatever
+  if (needCSRF) {
+    csrf(req, res, next);
+  } else {
+    next();
+  }
+}
+
+app.use(conditionalCSRF);
 
 
 //use helmet middleware for specific headers
