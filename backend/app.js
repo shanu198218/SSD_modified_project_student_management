@@ -6,6 +6,7 @@ const path = require("path");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const csrf = require("csurf");
+const helmet = require("helmet");
 
 const errorMiddleware = require("./middleware/error");
 
@@ -17,6 +18,9 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.use(helmet());
+
+// Use helmet middleware to disable the "X-Powered-By" header
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up rate limiting
